@@ -1,11 +1,14 @@
-function ImagePopup() {
+function ImagePopup(props) {
 
   return (
     <section className="popup popup_zoom" id="popup">
     <div className="popup__picture">
-      <button type="button" className="popup__close" aria-label="Закрыть форму" />
-      <img className="popup__img" alt="#" src="#" />
-      <p className="popup__caption" />
+      <button type="button"
+        onClick={props.onClose} 
+        className="popup__close" 
+        aria-label="Закрыть форму" />
+      <img className="popup__img" alt={props.card.name} src={props.card.link} />
+      <p className="popup__caption"> {props.card.name} </p>
     </div>
   </section>
   );
