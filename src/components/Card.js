@@ -1,11 +1,12 @@
 function Card(props) {
 
+
   function handleClick() {
-    props.onCardClick(props.card.link);
+    props.onCardClick(props.card);
   }
 
   return (
-    <div className="place">
+    <div className="place" key={props.card._id} >
       <button type="button" className="place__delete place__delete_shown" aria-label="Удалить элемeнт"></button>
       <button 
         onClick={handleClick}

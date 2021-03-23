@@ -38,8 +38,11 @@ function Main(props) {
       <section className="profile">
         <div 
           onClick={props.onEditAvatar}
-          className="profile__userpic-edit-button" />
-        <img className="profile__pic" src={userAvatar} alt="Фото пользователя" />
+          className="profile__userpic-edit-button"></div>
+        <img 
+          src={userAvatar}
+          className="profile__pic" 
+          alt="Фото пользователя" />
         <h1 className="profile__title">{userName}</h1>
         <button 
           type="button" 
@@ -56,7 +59,7 @@ function Main(props) {
 
       <section className="places">
         {cards.map((card) => (
-          <Card card={card} key={card._id} onClick={props.onCardClick}/>
+          <Card card={card} key={card._id} onCardClick={props.onCardClick}/>
         ))}
       </section>
 

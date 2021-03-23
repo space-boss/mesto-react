@@ -1,7 +1,11 @@
 function Footer() {
-  return (
+  
+   let newDate = new Date()
+   let year = newDate.getFullYear();
+
+   return (
     <footer className="footer">
-      <p className="footer__copyright">© 2021 Mesto Russia</p>
+      <p className="footer__copyright">© {year} Mesto Russia</p>
     </footer>
   )
 }
