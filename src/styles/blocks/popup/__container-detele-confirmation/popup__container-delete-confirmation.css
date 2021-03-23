@@ -1,4 +1,4 @@
-.popup__container-confirmation {
+.popup__container-delete-confirmation {
     position: relative;
     z-index: 10;
     width: 430px;
@@ -13,7 +13,7 @@
   
   
   @media screen and (max-width: 575px) {
-    .popup__container-confirmation {
+    .popup__container-delete-confirmation {
       width: calc(100% - 45px*2);
       min-width: 250px;
       max-width: 320px;
