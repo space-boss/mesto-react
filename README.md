@@ -2,7 +2,7 @@
 
 # Спринт 10: React
 
-[Ссылка на проект в Pages](https://space-boss.github.io/mesto/)
+[Ссылка на проект в Pages](https://space-boss.github.io/mesto-react)
 
 Учебный проект по просмотру и добавлению фотографий "Место" переформатирован в React. 
 
