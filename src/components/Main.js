@@ -1,5 +1,5 @@
 import React from 'react';
-import { ApiConfig } from '../utils/api';
+import { apiConfig } from '../utils/api';
 import Card from './Card'; 
 
 function Main(props) {
@@ -10,7 +10,7 @@ function Main(props) {
   const [cards, setInitialCards] = React.useState([]);
 
   React.useEffect(() => {
-    ApiConfig.getInfo()
+    apiConfig.getInfo()
     .then((res) => {
       setUserName(res.name);
       setUserDescription(res.about);
@@ -23,7 +23,7 @@ function Main(props) {
 
 
   React.useEffect(() => {
-    ApiConfig.getCard()
+    apiConfig.getCard()
     .then((res) => {
       setInitialCards(res);
     })

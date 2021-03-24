@@ -1,6 +1,7 @@
 function ImagePopup(props) {
 
   const popupOpenedClass = props.isOpen ? "popup_opened" : '';
+  
   return (
     <section className={`popup popup_zoom ${popupOpenedClass}`}>    
       <div className="popup__picture">
