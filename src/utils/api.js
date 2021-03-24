@@ -7,17 +7,18 @@ class Api {
     };
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
+  }
+
   getInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers
-    })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось загрузить данные с сервера')
-    })
+    }).then(this._checkResponse);
   }
 
   updateInfo(data) {
@@ -25,13 +26,7 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(data)
-    })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось загрузить данные')
-    })
+    }).then(this._checkResponse);
   }
 
   updateAvatar(data) {
@@ -39,25 +34,14 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(data)
-    })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось обновить аватар')
-    })
+    }).then(this._checkResponse);
   }
 
   getCard() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject('Не удалось загрузить данные с сервера');
-    });
+    }).then(this._checkResponse);
   }
 
   generateCard(newCard) {
@@ -68,12 +52,7 @@ class Api {
         name: newCard.place,
         link: newCard.link,
       })
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject('Не удалось создать объект');
-    });
+    }).then(this._checkResponse);
   }
   
 
@@ -82,13 +61,7 @@ class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(data)
-    })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Сохранение карточки не возможно')
-    })
+    }).then(this._checkResponse);
   }
 
   deleteCard(card){
@@ -107,30 +80,18 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Отметка Нравится не поставлена')
-    })
+    }).then(this._checkResponse);
   }
 
   unlikeCard(cardId) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось отменить отметку Нравится')
-    })
+    }).then(this._checkResponse);
   }
 }
 
-export const ApiConfig = new Api({
+export const apiConfig = new Api({
   url: "https://mesto.nomoreparties.co/v1/cohort-20",
   authorization: 'e834f1b9-ceab-4d08-a43d-18df96eb5098'
 });
