@@ -11,7 +11,7 @@ function App() {
   const [isAddPlacePopupOpen, toggleAddPlacePopup] = React.useState(false);
   const [isEditAvatarPopupOpen, toggleEditAvatarPopup] = React.useState(false);
   const [isImagePopupOpen, toggleZoomImagePopup] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState('');
+  const [selectedCard, setSelectedCard] = React.useState({name: '', link: ''});
 
 
 
@@ -32,12 +32,14 @@ function App() {
     toggleEditAvatarPopup(false);
     toggleEditProfilePopup(false);
     toggleZoomImagePopup(false);
-    setSelectedCard('');
+    setSelectedCard({name: '', link: ''});
   }
 
   function handleCardClick(card) {
-    setSelectedCard(card);
-    toggleZoomImagePopup(true);
+    if (card.link !== '' && card.name !== '') {
+      setSelectedCard({name: card.name, link: card.link});
+      toggleZoomImagePopup(true);
+    }
   }
 
 
@@ -50,7 +52,7 @@ function App() {
         onAddPlace = {handleAddPlaceClick}
         onCardClick = {handleCardClick}
       />
-      <Footer />s
+      <Footer />
 
       <PopupWithForm 
         name='profile' 
@@ -99,7 +101,6 @@ function App() {
         onClose = {closeAllPopups}
       />
 
-      <template className="template" />
     </div>
   );
 }
