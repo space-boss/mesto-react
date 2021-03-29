@@ -27,11 +27,9 @@ function Main(props) {
   }
 
   function handleCardDelete(card) {
-    const isOwn = props.card.owner._id === currentUser._id;
-
-    apiConfig.deleteCard(card._id, isOwn)
-    .then((newCard) => {
-      setInitialCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    apiConfig.deleteCard(card._id)
+    .then(() => {
+      setInitialCards(cards.filter((c) => c._id !== card._id));
     });
   }
 
