@@ -4,6 +4,8 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 import { apiConfig } from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -15,7 +17,7 @@ function App() {
   const [isImagePopupOpen, toggleZoomImagePopup] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({name: '', link: ''});
 
-  const [currentUser, setCurrentUser] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState({avatar: '', name: '', about: ''});
   /*const [cards, setInitialCards] = React.useState([]);*/
 
 
@@ -40,6 +42,31 @@ function App() {
     });
   }, []);*/
  
+  function handleUpdateUser(user) {
+    if (user.name !== '' && user.about !== '') {
+      apiConfig.updateInfo(user)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }
+
+  function handleUpdateAvatar(user) {
+    if (user.avatar !== '') {
+      apiConfig.updateAvatar(user)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });  
+   }  
+  }
 
   function handleEditAvatarClick() {
     toggleEditAvatarPopup(true);
@@ -81,17 +108,11 @@ function App() {
         />
         <Footer />
 
-        <PopupWithForm 
-          name='profile' 
-          title='Редактировать профиль'
+        <EditProfilePopup
           isOpen = {isEditProfilePopupOpen}
-          onClose = {closeAllPopups}>
-
-          <input type="text" className="popup__input-field popup__input-field_value_name" id="profile-username" name="name" placeholder="Имя" required minLength={2} maxLength={40} />
-          <span id="profile-username-error" className="popup__input-field popup__input-field_error" />
-          <input type="text" className="popup__input-field popup__input-field_value_job" id="profile-job" name="about" placeholder="О себе" required minLength={2} maxLength={200} />
-          <span id="profile-job-error" className="popup__input-field popup__input-field_error" />
-        </PopupWithForm>
+          onClose = {closeAllPopups}
+          onUpdateUser = {handleUpdateUser}
+        />
 
         <PopupWithForm 
           name='place' 
@@ -105,15 +126,11 @@ function App() {
           <span id="place-url-error" className="popup__input-field popup__input-field_error" />
         </PopupWithForm>
 
-        <PopupWithForm 
-          name='avatar'
-          title='Обновить аватар'
+        <EditAvatarPopup
           isOpen = {isEditAvatarPopupOpen}
-          onClose = {closeAllPopups}>
-
-        <input type="url" className="popup__input-field popup__input-field_value_userpic" id="userpic" name="avatar" placeholder="Ссылка" required />
-        <span id="userpic-error" className="popup__input-field popup__input-field_error" />
-        </PopupWithForm>
+          onClose = {closeAllPopups}
+          onUpdateAvatar = {handleUpdateAvatar}      
+        />  
 
         <PopupWithForm 
           name='delete-confirmation' 
