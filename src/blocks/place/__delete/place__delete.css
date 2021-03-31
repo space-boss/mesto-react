@@ -1,5 +1,5 @@
 .place__delete {
-  background-image: url(../../../../images/delete-button.svg);
+  background-image: url(../../../images/delete-button.svg);
   position: absolute;
   visibility: hidden;
   opacity: 0;

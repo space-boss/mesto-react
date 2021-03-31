@@ -6,7 +6,7 @@
 	width: 120px;
 	height: 120px;
   transition: opacity .5s ease-out;
-  background-image: url(../../../../images/userpic-edit-button.svg);
+  background-image: url(../../../images/userpic-edit-button.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 26px 26px;
