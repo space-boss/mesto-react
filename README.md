@@ -1,29 +1,33 @@
-# Место
+# MESTO x REACT. Student project for Yandex.Praktikum
 
-# Спринт 11: React
+### Description
 
-[Ссылка на проект в Pages](https://space-boss.github.io/mesto-react)
+Simple interactive gallery where users can share pictures. This is a student project created during a web development study track of Yandex Practicum. During the first spints of the course the project was written in pure JavaScript ([Link to the repository](https://github.com/space-boss/mesto), the current project was aiming to implement the same functionality using React library and JSX syntax.
 
-Исправления после ревью:
-* Можно убрать лайк с карточки
-* Во все запросы к api добавлены обработчики ошибок
+### [Have a look at the project on GitHub Pages](https://space-boss.github.io/mesto-react)
+
+### Functionality
+* Adding new cards to the grid
+* Deleting cards created by the user
+* Editing user profile information
+* Form validation on the client side
+* Communication with external API to fetch and patch/delete data
+
+### Technologies used
+* Adaptive layout using flexbox and grid positioning
+* Nested file structure according to BEM methodology
+* Asynchronous JavaScript
+* React JS
+* Functional components
+* Object oriented programming
+* Webpack
 
 
+### Install the project
+```
+git clone  https://github.com/space-boss/mesto-react.git
 
-Основной функционал проекта переписан в React.
+npm install
 
-* Рефакторинг: созданы компоненты открытия попапов
-* Добавлена возможность редактирования имени пользователя, аватара и добавления карточек
-* Значения полей ввода заданы через управляемые компоненты и рефы
-
-
-
-
-# Спринт 10: React
-
-Учебный проект по просмотру и добавлению фотографий "Место" переформатирован в React. 
-
-* Разметка страницы передается внутри JSX компонентов
-* Карточки и информация о пользователе загружаются с сервера
-* Логика открытия попапов реализована через декларативный подход
-
+npm start
+```
